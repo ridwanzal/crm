@@ -13,7 +13,7 @@
                         </li>
                         <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
+                        <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_kategori">
                                                 <option value=''> -- Pilih Kategori</option>
                                                 <?php 
                                                     foreach($kategori as $list){ ?>
@@ -84,7 +84,7 @@
                             <br/>
                             <br/>
                             <div class="modal-footer">
-                                <button type="button" id="submit_add_product" class="btn btn-default">Save changes</button>
+                                <button type="button" id="submit_add_product" class="btn btn-default">Simpan</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <br/>
                             <br/>
                             <div class="modal-footer">
-                                <button id="submit_add_category" type="button" class="btn btn-default">Save changes</button>
+                                <button id="submit_add_category" type="button" class="btn btn-default">Simpan</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" class="close_modal">Close</button>
                             </div>
                                

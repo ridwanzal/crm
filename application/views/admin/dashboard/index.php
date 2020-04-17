@@ -13,7 +13,7 @@
                         </li>
                         <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
+                        <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
                     </ul>
                 </div>
@@ -64,7 +64,7 @@
             <div class="row">
                 <?php 
                     foreach($produk as $list){?>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds">
                                 <div class="blog-img">
                                     <img src="<?php echo base_url()?>assets/img/post/ayam.jpg" alt="" />

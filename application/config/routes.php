@@ -55,7 +55,11 @@ $route['login'] = 'login';
 $route['logout'] = 'login/logout';
 $route['register'] = 'register';
 // consumer
-$route['consumer/profile'] = 'main/profile';
+$route['pelanggan/profile'] = 'main/profile';
+$route['pelanggan/transaksi'] = 'pelanggan/transaksi';
+$route['pelanggan/kritiksaran'] = 'pelanggan/kritiksaran';
+$route['admin/kritiksaran'] = 'admin/kritiksaran';
+$route['admin/profile'] = 'main/profile';
 
 // admin
 $route['admin/produk'] = 'admin/produk';

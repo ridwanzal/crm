@@ -33,7 +33,8 @@ class Login extends CI_Controller {
 		
 		$query="SELECT 
 				a.id_user as id_user, 
-				a.level as level 
+				a.level as level,
+				b.id_konsumen as id_konsumen
 				FROM 
 				user a , 
 				konsumen b 

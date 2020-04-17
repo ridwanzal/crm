@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
 	}
 	
 	public function produk(){
-            $data['title_bar'] = "";
+            $data['title_bar'] = "Produk | ayampreneur";
             $data['header_page'] = "";
 
             $id_user = $this->session->userdata('id_user');
@@ -49,7 +49,7 @@ class Admin extends CI_Controller {
       }
 
       public function pelanggan(){
-            $data['title_bar'] = "";
+            $data['title_bar'] = "Pelanggan | ayampreneur";
             $data['header_page'] = "";
 
             $id_user = $this->session->userdata('id_user');
@@ -89,8 +89,53 @@ class Admin extends CI_Controller {
       }
 
 
+      public function kritiksaran(){
+            $data['title_bar'] = "Kritik dan Saran | ayampreneur";
+            $data['header_page'] = "";
+            
+            $id_user = $this->session->userdata('id_user');
+                
+            $query = "SELECT 
+            a.*, b.*
+            FROM 
+            user a , 
+            konsumen b 
+            where a.id_konsumen = b.id_konsumen AND
+            a.id_user = '$id_user' ";
+    
+            $query2 = "SELECT * FROM kategori";
+    
+            $query3 = "SELECT * FROM produk";
+    
+            $query4 = "SELECT 
+            a.*, b.*
+            FROM 
+            user a , 
+            konsumen b 
+            where a.id_konsumen = b.id_konsumen AND a.level = 'konsumen' ";
+    
+            $query5 = "SELECT a.*, b.nama_konsumen FROM keluhan a, konsumen b WHERE a.id_konsumen = b.id_konsumen ";
+    
+            $query_result = $this->db->query($query)->result();
+            $query_result2 = $this->db->query($query2)->result();
+            $query_result3 = $this->db->query($query3)->result();
+            $query_result4 = $this->db->query($query4)->result();
+            $query_result5 = $this->db->query($query5)->result();
+    
+            $data['profile'] = $query_result;
+            $data['kategori'] = $query_result2;
+            $data['produk'] = $query_result3;
+            $data['pelanggan'] = $query_result4;
+            $data['keluhan'] = $query_result5;
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/navbar', $data);
+            $this->load->view('admin/dashboard/kritiksaran', $data);
+            $this->load->view('pelanggan/footer', $data);
+        }
+
+
       public function upselling(){
-            $data['title_bar'] = "";
+            $data['title_bar'] = "Upselling | ayampreneur";
             $data['header_page'] = "";
 
             $id_user = $this->session->userdata('id_user');
@@ -114,17 +159,19 @@ class Admin extends CI_Controller {
             konsumen b 
             where a.id_konsumen = b.id_konsumen AND a.level = 'konsumen' ";
 
-            $query5 = "SELECT * FROM ";
+            $query5 = "SELECT * FROM upselling";
 
             $query_result = $this->db->query($query)->result();
             $query_result2 = $this->db->query($query2)->result();
             $query_result3 = $this->db->query($query3)->result();
             $query_result4 = $this->db->query($query4)->result();
+            $query_result5 = $this->db->query($query5)->result();
 
             $data['profile'] = $query_result;
             $data['kategori'] = $query_result2;
             $data['produk'] = $query_result3;
             $data['pelanggan'] = $query_result4;
+            $data['upselling'] = $query_result5;
             $this->load->view('admin/header', $data);
             $this->load->view('admin/navbar', $data);
             $this->load->view('admin/dashboard/upselling', $data);

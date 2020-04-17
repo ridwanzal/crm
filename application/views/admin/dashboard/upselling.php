@@ -13,7 +13,7 @@
                         </li>
                         <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
+                        <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
                     </ul>
                 </div>
@@ -54,12 +54,27 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="input-group mg-t-15">
+                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                                        <div class="nk-int-st">
+                                            <select class="selectpicker" id="id_kategori">
+                                                <option value=''> -- Jumlah </option>
+                                                <?php 
+                                                    for($x=1; $x <= 50; $x++){ 
+                                                        $i++;
+                                                        ?>
+                                                        <option value='<?php echo $x; ?>'><?php echo $x; ?></option>
+                                                    <?php }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <br/>
                             <br/>
                             <div class="modal-footer">
-                                <button type="button" id="submit_add_product" class="btn btn-default">Save changes</button>
+                                <button type="button" id="submit_add_product" class="btn btn-default">Simpan</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -136,26 +151,22 @@
                                 <thead>
                                     <tr>
                                         <th>No. </th>
-                                        <th>Nama Produk</th>
-                                        <th>Harga</th>
-                                        <th>Stok</th>
-                                        <th>Spesifikasi</th>
-                                        <th>Action</th>
+                                        <th>id_produk</th>
+                                        <th>id_produk2</th>
+                                        <th>jumlah</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
                                         $i = 0;
-                                        foreach($produk as $list){
+                                        foreach($upselling as $list){
                                             $i++;
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
-                                                    <td><?php echo $list->nama_produk; ?></td>
-                                                    <td><?php echo $list->harga; ?></td>
-                                                    <td><?php echo $list->stok; ?></td>
-                                                    <td><?php echo $list->spesifikasi; ?></td>
-                                                    <td>Update</td>
+                                                    <td><?php echo $list->id_produk; ?></td>
+                                                    <td><?php echo $list->id_produk2; ?></td>
+                                                    <td><?php echo $list->jumlah; ?></td>
                                                 </tr>
                                         <?php }
                                     ?>

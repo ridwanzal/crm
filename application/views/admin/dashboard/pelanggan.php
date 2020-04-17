@@ -13,7 +13,7 @@
                         </li>
                         <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
+                        <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_kategori">
                                                 <option value=''> -- Pilih Kategori</option>
                                                 <?php 
                                                     foreach($kategori as $list){ ?>

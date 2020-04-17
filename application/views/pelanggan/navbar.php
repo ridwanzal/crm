@@ -23,7 +23,7 @@
                             <?php }else { ?>
                                 <ul class="nav navbar-nav notika-top-nav">
                                     <li class="nav-item" style="">
-                                        <a href="<?php echo base_url()?>consumer/profile"><button class="btn btn-warning notika-btn-warning">Profile</button></a>
+                                        <a href="<?php echo base_url()?>pelanggan/profile"><button class="btn btn-warning notika-btn-warning">Profile</button></a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="<?php echo base_url()?>logout"><button class="btn btn-primary notika-btn-primary">Logout</button></a>
