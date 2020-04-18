@@ -76,11 +76,18 @@
                 use_datatable();
                 submit_kritiksaran();
             });
+
+            function submit_transaksi(id_produk, id_konsumen){
+                let id_produk_data  = id_produk;
+                let id_konsumen_data = id_konsumen;
+                let quantity = $('#quantity').val();
+            } 
             
 
             function use_datatable(){
               // $('#data-table-basic').DataTable();
               $('#table_kritiksaran').DataTable();
+              $('#table3').DataTable();
             }
             
             

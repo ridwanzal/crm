@@ -11,7 +11,7 @@
                         </li>
                         <li><a href="<?php echo base_url();?>admin/produk/upselling"><i class="notika-icon notika-edit"></i> Up Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
+                        <li><a href="#"><i class="notika-icon notika-edit"></i> Cross Selling</a>
                         </li>
                         <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
     </div>
-    <section style="min-height:800px;position:relative;top:-60px;">
+    <!-- <section style="min-height:800px;position:relative;top:-60px;">
         <div class="container">
             <div class="row">
                 <?php 
@@ -91,4 +91,4 @@
                 ?>
             </div>
         </div>
-    </section>
+    </section> -->

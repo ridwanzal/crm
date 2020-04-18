@@ -76,6 +76,7 @@
             submit_kategori();
             submit_produk();
             use_datatable();
+            // submit_transaksi();
         });
 
         function use_datatable(){
@@ -112,6 +113,10 @@
                   }
               });
           });
+        }
+
+        function submit_transaksi(a, b){
+          alert(a + b);
         }
 
         function submit_produk(){

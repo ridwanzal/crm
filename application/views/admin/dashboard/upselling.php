@@ -11,7 +11,7 @@
                         </li>
                         <li class="active"><a href="<?php echo base_url(); ?>admin/produk/upselling"><i class="notika-icon notika-edit"></i> Up Selling</a>
                         </li>
-                        <li><a href="#"><i class="notika-icon notika-edit"></i> Down Selling</a>
+                        <li><a href="#"><i class="notika-icon notika-edit"></i> Cross Selling</a>
                         </li>
                         <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
@@ -35,16 +35,10 @@
                                 <h2>Tambah Produk Upselling</h2>
                                 <br/>
                                 <div class="nk-form">
-                                    <div class="input-group">
-                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
-                                        <div class="nk-int-st">
-                                            <input type="text" class="form-control" placeholder="Nama Produk Upselling" name="p_nama_produk" id="p_nama_produk" required>
-                                        </div>
-                                    </div>
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_kategori">
                                                 <option value=''> -- Pilih Produk bundler</option>
                                                 <?php 
                                                     foreach($produk as $list){ ?>
@@ -57,7 +51,20 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_kategori">
+                                                <option value=''> -- Pilih Produk upselling</option>
+                                                <?php 
+                                                    foreach($produk as $list){ ?>
+                                                        <option value='<?php echo $list->id_produk; ?>'><?php echo $list->nama_produk; ?></option>
+                                                    <?php }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mg-t-15">
+                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                                        <div class="nk-int-st">
+                                            <select class="selectpicker form-control" id="id_kategori">
                                                 <option value=''> -- Jumlah </option>
                                                 <?php 
                                                     for($x=1; $x <= 50; $x++){ 

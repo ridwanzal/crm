@@ -34,13 +34,17 @@ class Main extends CI_Controller {
 			where a.id_konsumen = b.id_konsumen AND
 			a.id_user = '$id_user' ";
 
-			$query2 = "SELECT * FROM produk";
+			$query2 = "SELECT * FROM produk where stok > 0";
+
+			$query3 = "SELECT * FROM kategori";
+			$query_result3 = $this->db->query($query3)->result();
 			
 			$query_result = $this->db->query($query)->result();
 			$query_result2 = $this->db->query($query2)->result();
 
 			$data['profile'] = $query_result;
 			$data['produk'] = $query_result2;
+			$data['kategori'] = $query_result3;
 			$this->load->view('admin/header', $data);
 			$this->load->view('admin/navbar', $data);
 			$this->load->view('admin/dashboard/index', $data);
@@ -59,13 +63,18 @@ class Main extends CI_Controller {
 			where a.id_konsumen = b.id_konsumen AND
 			a.id_user = '$id_user' ";
 
-			$query2 = "SELECT * FROM produk";
+			$query2 = "SELECT * FROM produk where stok > 0 ";
 
 			$query_result = $this->db->query($query)->result();
 			$query_result2 = $this->db->query($query2)->result();
 
+
+			$query3 = "SELECT * FROM kategori";
+			$query_result3 = $this->db->query($query3)->result();
+
 			$data['profile'] = $query_result;
 			$data['produk'] = $query_result2;
+			$data['kategori'] = $query_result3;
 			$this->load->view('pelanggan/header', $data);
 			$this->load->view('pelanggan/navbar', $data);
 			$this->load->view('pelanggan/dashboard/index', $data);
@@ -92,6 +101,30 @@ class Main extends CI_Controller {
 		$this->load->view('pelanggan/dashboard/profile', $data);
 		$this->load->view('pelanggan/footer', $data);
   }
+
+  public function detail_produk($id_produk){
+		$query = "SELECT * FROM produk where id_produk = $id_produk";
+		
+		$id_user = $this->session->userdata('id_user');
+		$query2  = "SELECT 
+		a.*, b.*
+		FROM 
+		user a , 
+		konsumen b 
+		where a.id_konsumen = b.id_konsumen AND
+		a.id_user = '$id_user' ";
+		$query_result = $this->db->query($query)->result();
+
+
+		$result = $this->db->query($query)->result();
+		$result2 = $this->db->query($query2)->result();
+		
+		$data['produk'] = $result;
+		$data['profile'] = $result2;
+		$this->load->view('pelanggan/header', $data);
+		$this->load->view('pelanggan/navbar', $data);
+		$this->load->view('pelanggan/dashboard/produkdetail', $data);
+		$this->load->view('pelanggan/footer', $data);
+  }
    
-  
 }

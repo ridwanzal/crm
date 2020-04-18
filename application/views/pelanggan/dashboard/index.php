@@ -18,14 +18,22 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.html">Kecil 0 - 1 (kg)</a>
+                                <li><a>Pilih Daftar Kategori berikut :</a></li>
+                                <?php
+
+                                    foreach($kategori as $list){?>
+                                    <li><a href="<?php echo base_url();?>pelanggan/kategori_produk/<?php echo $list->id_kategori; ?>"><span class="btn btn-default"><?php echo $list->nama_kategori; ?></span></a></li>
+                                    <?php }
+                                
+                                ?>
+                                <!-- <li><a href="index.html"><span class="btn btn-xs btn-default">Kecil 0 - 1 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Sedang 1 - 2 (kg)</a>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Sedang 1 - 2 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Besar 2 - 3 (kg)</a>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Besar 2 - 3 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Super 3 - 4 (kg)</a>
-                                </li>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Super 3 - 4 (kg)</span></a>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -63,7 +71,12 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                                    <form method='GET' action='<?php echo base_url()?>/pelanggan/search'>
+                                    <div style="display:flex;">
+                                            <input type="text" class="form-control"  name="keyword" placeholder="Cari produk disini ...">&nbsp;
+                                            <input type="submit" style="border-radius:4px;padding-right:15px; padding-left:15px;background-color:#00c292;border:1px solid #00c292;color:#fff;">
+                                        </div>
+                                    </form>
 								</div>
 							</div>
 						</div>
@@ -92,7 +105,7 @@
                                     <?php 
                                         if($this->session->userdata('status') == "login"){
                                             ?>
-                                            <input style="background:#3C6E71; color:#fff ;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;" type="submit" class="" value="Beli">
+                                        <a href="<?php echo site_url('main/detail_produk').'/'.$list->id_produk;?>"><input style="background:#3C6E71; color:#fff ;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;" type="submit" class="" value="Beli" onclick="function getdate()"></a>
                                         <?php }else{ ?>
                                             <a href="<?php echo base_url();?>login"><button style="background:#000; color:#fff;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;">Login untuk membeli</button></a>
                                         <?php }
