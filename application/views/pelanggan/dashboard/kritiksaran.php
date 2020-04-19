@@ -9,10 +9,10 @@
                             if($this->session->userdata('status') == "login"){ ?>
                                 <li><a href="<?php echo base_url(); ?>pelanggan/transaksi"><i class="notika-icon notika-mail"></i> Transaksi</a>
                                 </li>
-                                <li class="active"><a href="<?php echo base_url(); ?>pelanggan/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik & Saran</a>
-                                </li>
                             <?php }
                         ?>
+                        <li class="active"><a href="<?php echo base_url(); ?>pelanggan/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik & Saran</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <br/>
-        <div class="data-table-area">
+        <!-- <div class="data-table-area">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -84,6 +84,56 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <div class="container">
+            <?php
+
+                    foreach($keluhan as $list){ ?>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="view-mail-list sm-res-mg-t-30" style="border:1px solid #ddd;">
+                                        <div class="view-mail-hd">
+                                            <div class="view-mail-hrd">
+                                                <div style="display:flex;">
+                                                    <img style="position:relative;top:-1px;width:26px;border-radius:50px;border:1px solid #bbb;" src="https://s.kaskus.id/r60x60/user/avatar/2008/10/23/avatar571042_1.gif">&nbsp;&nbsp;&nbsp;<h2><?php echo $list->nama_konsumen; ?></h2>
+                                                </div>
+                                            </div>
+                                            <div class="view-ml-rl">
+                                                <div style="display:flex;">
+                                                    <?php
+                                                    if($list->tipe == 'saran'){ ?>
+                                                        <button class="btn btn-success btn-xs"><i class="notika-icon notika-next"></i> Saran</button>&nbsp;&nbsp;
+                                                    <?php }else { ?>
+                                                        <button class="btn btn-danger btn-xs"><i class="notika-icon notika-next"></i> Kritik</button>&nbsp;&nbsp;
+                                                    <?php } ?>
+                                                    <p><?php echo $list->tanggal; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mail-ads mail-vw-ph">
+                                          
+                                        </div>
+                                        <div class="view-mail-atn" style="border:1px solid #e9e9e9;    padding: 20px 20px 3px 20px;">
+                                            <p><?php echo $list->pesan; ?></p>
+                                        </div>
+                                        <div class="file-download-system">
+                                        </div>
+                                        <div class="vw-ml-action-ls text-right mg-t-10">
+                                            <div class="btn-group ib-btn-gp active-hook nk-email-inbox">
+                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-next"></i> Komentar</button>
+                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-next"></i> Balas</button>
+                                                <!-- <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-right-arrow"></i> Forward</button>
+                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-print"></i> Print</button>
+                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-trash"></i> Remove</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                   <?php }
+            
+            ?>
         </div>
     </section>
 

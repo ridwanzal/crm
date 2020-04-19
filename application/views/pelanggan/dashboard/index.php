@@ -1,26 +1,35 @@
-    <div class="main-menu-area mg-tb-40">
+   
+<style>
+.custom-menu-content ul.notika-main-menu-dropdown li a{
+    padding: 20px 7px 20px 4px;
+}
+
+.kategori_chooser{
+    padding-left: 20px;
+}
+</style>
+
+   <div class="main-menu-area mg-tb-40">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li class="active"><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Home</a>
                         </li>
-
                         <?php
                             if($this->session->userdata('status') == "login"){ ?>
                                 <li><a href="<?php echo base_url(); ?>pelanggan/transaksi"><i class="notika-icon notika-mail"></i> Transaksi</a>
-                                </li>
-                                <li><a href="<?php echo base_url(); ?>pelanggan/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik & Saran</a>
-                                </li>
+                            </li>
                             <?php }
                         ?>
+                        <li><a href="<?php echo base_url(); ?>pelanggan/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik & Saran</a>
+                        </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a>Pilih Daftar Kategori berikut :</a></li>
+                                <li class="kategori_chooser"><a>Pilih Daftar Kategori berikut :</a></li>
                                 <?php
-
                                     foreach($kategori as $list){?>
                                     <li><a href="<?php echo base_url();?>pelanggan/kategori_produk/<?php echo $list->id_kategori; ?>"><span class="btn btn-default"><?php echo $list->nama_kategori; ?></span></a></li>
                                     <?php }

@@ -1,3 +1,13 @@
+
+<style>
+.custom-menu-content ul.notika-main-menu-dropdown li a{
+    padding: 20px 7px 20px 4px;
+}
+
+.kategori_chooser{
+    padding-left: 20px;
+}
+</style>
 <div class="main-menu-area mg-tb-40">
         <div class="container">
             <div class="row">
@@ -17,14 +27,21 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Home" class="tab-pane in active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.html">Kecil 0 - 1 (kg)</a>
+                                <li class="kategori_chooser"><a>Pilih Daftar Kategori berikut :</a></li>
+                                <?php
+                                    foreach($kategori as $list){?>
+                                    <li><a href="<?php echo base_url();?>pelanggan/kategori_produk/<?php echo $list->id_kategori; ?>"><span class="btn btn-default"><?php echo $list->nama_kategori; ?></span></a></li>
+                                    <?php }
+                                
+                                ?>
+                                <!-- <li><a href="index.html"><span class="btn btn-xs btn-default">Kecil 0 - 1 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Sedang 1 - 2 (kg)</a>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Sedang 1 - 2 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Besar 2 - 3 (kg)</a>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Besar 2 - 3 (kg)</span></a>
                                 </li>
-                                <li><a href="index.html">Super 3 - 4 (kg)</a>
-                                </li>
+                                <li><a href="index.html"><span class="btn btn-xs btn-default">Super 3 - 4 (kg)</span></a>
+                                </li> -->
                             </ul>
                         </div>
                     </div>

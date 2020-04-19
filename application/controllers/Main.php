@@ -118,9 +118,14 @@ class Main extends CI_Controller {
 
 		$result = $this->db->query($query)->result();
 		$result2 = $this->db->query($query2)->result();
+
+
+		$query3 = "SELECT * FROM kategori";
+		$query_result3 = $this->db->query($query3)->result();
 		
 		$data['produk'] = $result;
 		$data['profile'] = $result2;
+		$data['kategori'] = $query_result3;
 		$this->load->view('pelanggan/header', $data);
 		$this->load->view('pelanggan/navbar', $data);
 		$this->load->view('pelanggan/dashboard/produkdetail', $data);
