@@ -92,3 +92,21 @@
             </div>
         </div>
     </section> -->
+    <div class="line-chart-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="visitor-sv-tm-int sm-res-mg-t-30 tb-res-mg-t-30 tb-res-ds-n dk-res-ds">
+                        <div class="contact-hd mg-bt-ant-inner">
+                            <h2>Grafik Penjualan</h2>
+                            <p>Grafik penjualan berdasarkan bulan</p>
+                        </div>
+                        <div class="visitor-st-ch visitor-ov-ct">
+                            <div id="visit-over-time" class="flot-chart"></div>
+                            <div class="flc-visits"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </d>

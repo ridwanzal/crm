@@ -67,6 +67,13 @@
     <!-- main JS
 		============================================ -->
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
+        <!-- flot JS
+		============================================ -->
+    <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.js"></script>
+    <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.resize.js"></script>
+    <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.time.js"></script>
+    <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/flot/analtic-flot-active.js"></script>
 
 </body>
 <script>

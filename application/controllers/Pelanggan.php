@@ -61,6 +61,41 @@ class Pelanggan extends CI_Controller {
         $this->load->view('pelanggan/footer', $data);
     }
 
+    public function add_komentar(){
+            $id_keluhan = $this->input->post('id_keluhan', TRUE);
+            $id_konsumen = $this->input->post('id_konsumen', TRUE);
+            $tanggal = $this->input->post('tanggal', TRUE);
+            $pesan = $this->input->post('pesan', TRUE);
+
+            $data = array(
+                  'id_keluhan' => $id_keluhan,
+                  'id_konsumen' => $id_konsumen,
+                  'tanggal' => $tanggal,
+                  'pesan' => $pesan
+            );
+
+            $this->db->insert('komentar', $data);
+            $affect_row = $this->db->affected_rows();
+            if($affect_row){
+                  $insert_id = $this->db->insert_id();
+                  $query = "SELECT *, b.nama_konsumen FROM komentar a, konsumen b where a.id_konsumen = b.id_konsumen AND  id_komentar = $insert_id ";
+                  $query_result = $this->db->query($query)->result();
+                  $result = json_encode($query_result);
+                  echo $result;
+            }
+    }
+
+
+    public function show_komentar(){
+      $id_keluhan = $this->input->post('id_keluhan', TRUE);
+      $query = "SELECT *, b.nama_konsumen FROM komentar a, konsumen b where b.id_konsumen= a.id_konsumen AND id_keluhan = $id_keluhan ";
+      $query_result = $this->db->query($query)->result();
+      $query_result = $this->db->query($query)->result();
+      $result = json_encode($query_result);
+      echo $result;
+    }
+
+
     public function transaksi(){
         $data['title_bar'] = "Transaksi | ayampreneur";
         $data['header_page'] = "";

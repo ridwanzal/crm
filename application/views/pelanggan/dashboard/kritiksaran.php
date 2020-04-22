@@ -38,57 +38,12 @@
             </div>
         </div>
         <br/>
-        <!-- <div class="data-table-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="data-table-list">
-                                <div class="table-responsive">
-                                    <table id="table_kritiksaran" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No. </th>
-                                                <th>Nama Konsumen</th>
-                                                <th>Jenis</th>
-                                                <th>Saran</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                                $i = 0;
-                                                foreach($keluhan as $list){
-                                                    $i++;
-                                                    ?>
-                                                        <tr>
-                                                            <td><?php echo $i; ?></td>
-                                                            <td><?php echo $list->nama_konsumen; ?></td>
-                                                            <td>
-                                                                
-                                                                <?php 
-                                                            if($list->tipe == 'saran'){ ?>
-                                                                <div class="alert alert-success" role="alert"><?php echo $list->tipe; ?></div>
-                                                            <?php }else { ?>
-                                                                <div class="alert alert-danger" role="alert"><?php echo $list->tipe; ?></div>
-                                                            <?php } 
-                                                            
-                                                            ?>
-                                                            </td>
-                                                            <td><?php echo $list->pesan; ?></td>
-                                                        </tr>
-                                                <?php }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="container">
             <?php
-
-                    foreach($keluhan as $list){ ?>
+                    $i = 0;
+                    foreach($keluhan as $list){ 
+                        $i++;
+                        ?>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="view-mail-list sm-res-mg-t-30" style="border:1px solid #ddd;">
@@ -106,7 +61,7 @@
                                                     <?php }else { ?>
                                                         <button class="btn btn-danger btn-xs"><i class="notika-icon notika-next"></i> Kritik</button>&nbsp;&nbsp;
                                                     <?php } ?>
-                                                    <p><?php echo $list->tanggal; ?></p>
+                                                      &nbsp;&nbsp;&nbsp;<p><?php echo $list->tanggal; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,12 +75,46 @@
                                         </div>
                                         <div class="vw-ml-action-ls text-right mg-t-10">
                                             <div class="btn-group ib-btn-gp active-hook nk-email-inbox">
-                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-next"></i> Komentar</button>
-                                                <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-next"></i> Balas</button>
+                                                <button onclick="show_comment(<?php echo $i; ?>, <?php echo $list->id_keluhan; ?>)" class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-mail"></i>&nbsp;&nbsp; Komentar</button>
+                                                <?php
+                                                    if($this->session->userdata('status') == 'login'){ ?>
+                                                        <button id="reply_<?php echo $i; ?>" onclick="reply_toggle(<?php echo $i; ?>)" class="btn btn-default btn-sm waves-effect" ><i class="notika-icon notika-next" ></i> Balas</button>
+                                                    <?php }
+                                                ?>
                                                 <!-- <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-right-arrow"></i> Forward</button>
                                                 <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-print"></i> Print</button>
                                                 <button class="btn btn-default btn-sm waves-effect"><i class="notika-icon notika-trash"></i> Remove</button> -->
                                             </div>
+                                            <div class="form-group" id="reply_container<?php echo $i; ?>" style="display:none;margin-top:10px;">
+                                                <div class="form-single nk-int-st widget-form">
+                                                    <textarea style="background: #eee; padding: 10px; border-radius: 6px; "id="reply_text_<?php echo $i; ?>"  name="message" class="form-control" placeholder="Beri Komentar" name="p_spesifikasi"  id="detail_kritiksaran"></textarea>
+                                                </div>
+                                                <button onclick="reply_thread(<?php echo $i; ?>, <?php echo $list->id_keluhan; ?>, <?php echo $this->session->userdata('id_konsumen'); ?>)" style="margin-top:5px;" class="btn btn-primary btn-sm"><i class="notika-icon notika-mail" ></i>&nbsp;&nbsp; Kirim</button>
+                                            </div>
+                                            <div style="" id="comment_container_<?php echo $list->id_keluhan; ?>_<?php echo $i; ?>">
+
+                                            </div>
+                                            <!-- <div>
+                                                <hr/>
+                                                <div class="view-mail-hd">
+                                                    <div class="view-mail-hrd">
+                                                        <div style="display:flex;">
+                                                            <img style="position:relative;top:-1px;width:26px;border-radius:50px;border:1px solid #bbb;" src="https://s.kaskus.id/r60x60/user/avatar/2008/10/23/avatar571042_1.gif">&nbsp;&nbsp;&nbsp;<h2><?php echo $list->nama_konsumen; ?></h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="view-ml-rl">
+                                                        <div style="display:flex;">
+                                                            <?php
+                                                            if($list->tipe == 'saran'){ ?>
+                                                                <button class="btn btn-success btn-xs"><i class="notika-icon notika-next"></i> Saran</button>&nbsp;&nbsp;
+                                                            <?php }else { ?>
+                                                                <button class="btn btn-danger btn-xs"><i class="notika-icon notika-next"></i> Kritik</button>&nbsp;&nbsp;
+                                                            <?php } ?>
+                                                            <p><?php echo $list->tanggal; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

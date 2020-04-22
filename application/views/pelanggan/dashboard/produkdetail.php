@@ -34,14 +34,6 @@
                                     <?php }
                                 
                                 ?>
-                                <!-- <li><a href="index.html"><span class="btn btn-xs btn-default">Kecil 0 - 1 (kg)</span></a>
-                                </li>
-                                <li><a href="index.html"><span class="btn btn-xs btn-default">Sedang 1 - 2 (kg)</span></a>
-                                </li>
-                                <li><a href="index.html"><span class="btn btn-xs btn-default">Besar 2 - 3 (kg)</span></a>
-                                </li>
-                                <li><a href="index.html"><span class="btn btn-xs btn-default">Super 3 - 4 (kg)</span></a>
-                                </li> -->
                             </ul>
                         </div>
                     </div>
