@@ -6,7 +6,7 @@ use Sunra\PhpSimple\HtmlDomParser; // lib html parser
 use stringEncode\Encode; // lib html parser
 use PHPHtmlParser\Dom; // lib html parser
 use FastSimpleHTMLDom\Document; // lib html parser
-class Main extends CI_Controller {
+class Main extends CI_Controller { q
 
 	function __construct(){
 		parent::__construct();		
@@ -119,9 +119,13 @@ class Main extends CI_Controller {
 		$result = $this->db->query($query)->result();
 		$result2 = $this->db->query($query2)->result();
 
-
 		$query3 = "SELECT * FROM kategori";
 		$query_result3 = $this->db->query($query3)->result();
+
+		// retrive daftar upselling produk
+		$query4 = "SELECT * FROM ";
+
+		// retrieve daftar cross selling product
 		
 		$data['produk'] = $result;
 		$data['profile'] = $result2;

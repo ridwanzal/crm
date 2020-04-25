@@ -104,5 +104,30 @@
                     <?php }
                 ?>
             </div>
+            <div class="row">
+                <?php 
+                    foreach($produk as $list){?>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds" >
+                                    <form method="POST" action="<?php echo base_url('pelanggan/submit_transaksi'); ?>">
+                                        <div class="blog-ctn">
+                                            <p style="color:#888;font-size:20px; font-weight:bold;">Produk Upselling</p>    
+                                            <div class="blog-hd-sw">
+                                                <hr>
+                                                <p style="color:#444;font-size:20px; font-weight:600;"><?php echo $list->nama_produk; ?></p>
+                                                <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga; ?></p>
+                                            </div>
+                                            <p><?php echo $list->spesifikasi; ?></p>
+                                            <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    <?php }
+                ?>
+            </div>
+            <div class="row">
+              
+            </div>
         </div>
     </section>

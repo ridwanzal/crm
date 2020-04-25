@@ -38,7 +38,7 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_produk1">
                                                 <option value=''> -- Pilih Produk bundler</option>
                                                 <?php 
                                                     foreach($produk as $list){ ?>
@@ -51,7 +51,7 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="id_kategori">
+                                            <select class="selectpicker form-control" id="id_produk2">
                                                 <option value=''> -- Pilih Produk upselling</option>
                                                 <?php 
                                                     foreach($produk as $list){ ?>
@@ -64,7 +64,7 @@
                                     <div class="input-group mg-t-15">
                                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                                         <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="id_kategori">
+                                            <select class="selectpicker form-control" id="jumlah_upselling">
                                                 <option value=''> -- Jumlah </option>
                                                 <?php 
                                                     for($x=1; $x <= 50; $x++){ 
@@ -81,13 +81,13 @@
                             <br/>
                             <br/>
                             <div class="modal-footer">
-                                <button type="button" id="submit_add_product" class="btn btn-default">Simpan</button>
+                                <button type="button" id="submit_upselling" class="btn btn-default">Simpan</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="add_category" role="dialog">
+                <div class="modal fade" id="add_upselling" role="dialog">
                     <div class="modal-dialog modals-default">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -158,21 +158,21 @@
                                 <thead>
                                     <tr>
                                         <th>No. </th>
-                                        <th>id_produk</th>
-                                        <th>id_produk2</th>
-                                        <th>jumlah</th>
+                                        <th>Nama Produk Bundler</th>
+                                        <th>Nama Produk Upselling</th>
+                                        <th>Jumlah</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
                                         $i = 0;
-                                        foreach($upselling as $list){
+                                        foreach($upselling2 as $list){
                                             $i++;
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
-                                                    <td><?php echo $list->id_produk; ?></td>
-                                                    <td><?php echo $list->id_produk2; ?></td>
+                                                    <td><?php echo $list->nama_produk1; ?></td>
+                                                    <td><?php echo $list->nama_produk2; ?></td>
                                                     <td><?php echo $list->jumlah; ?></td>
                                                 </tr>
                                         <?php }

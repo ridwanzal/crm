@@ -161,17 +161,33 @@ class Admin extends CI_Controller {
 
             $query5 = "SELECT * FROM upselling";
 
+            $query6 = "SELECT
+                        b.id_upselling,
+                        b.jumlah,
+                        a1.id_produk as id_produk1,
+                        a2.id_produk as id_produk2,
+                        a2.nama_produk as nama_produk1,
+                        a1.nama_produk as nama_produk2
+                        FROM
+                        produk as a1,
+                        produk as a2,
+                        upselling as b
+                        where a1.id_produk = b.id_produk
+                        and a2.id_produk = b.id_produk2";
+
             $query_result = $this->db->query($query)->result();
             $query_result2 = $this->db->query($query2)->result();
             $query_result3 = $this->db->query($query3)->result();
             $query_result4 = $this->db->query($query4)->result();
             $query_result5 = $this->db->query($query5)->result();
+            $query_result6 = $this->db->query($query6)->result();
 
             $data['profile'] = $query_result;
             $data['kategori'] = $query_result2;
             $data['produk'] = $query_result3;
             $data['pelanggan'] = $query_result4;
             $data['upselling'] = $query_result5;
+            $data['upselling2'] = $query_result6;
             $this->load->view('admin/header', $data);
             $this->load->view('admin/navbar', $data);
             $this->load->view('admin/dashboard/upselling', $data);
@@ -236,7 +252,30 @@ class Admin extends CI_Controller {
       }
 
       public function upselling_add(){
-            
+            $id_produk = $this->input->post('id_produk', TRUE);
+            $id_produk2 = $this->input->post('id_produk2', TRUE);
+            $jumlah = $this->input->post('jumlah', TRUE);
+            $data = array(
+                  'id_produk' => $id_produk,
+                  'id_produk2' => $id_produk2,
+                  'jumlah' => $jumlah
+            );
+
+            $this->db->insert('upselling', $data);
+            $affect_row = $this->db->affected_rows();
+            if($affect_row > 0){
+                  $data2 = array(
+                        'status' => 'success'
+                  );
+                  $result =json_encode($data2);
+                  echo $result;
+            }else{
+                  $data3 = array(
+                        'status' => 'failed'
+                  );
+                  $result = json_encode($data3);
+                  echo $result;
+            }
       }
 
 }

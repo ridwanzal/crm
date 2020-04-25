@@ -84,11 +84,45 @@
             submit_produk();
             use_datatable();
             // submit_transaksi();
+            submit_upselling();
         });
 
         function use_datatable(){
           $('#data-table-basic').DataTable();
           $('#table2').DataTable();
+        }
+
+        function submit_upselling(){
+          $('#submit_upselling').on('click', function(){
+              var get_id_produk = $('#id_produk1').val();
+              var get_id_produk2 = $('#id_produk2').val();
+              var get_jumlah = $('#jumlah_upselling').val();
+              if(get_id_produk && get_id_produk2 && get_jumlah){
+                  $.ajax({
+                        url: "" + BASE_URL + '/admin/upselling_add/',
+                        type: "post",
+                        data: {
+                          'id_produk' : '' + get_id_produk,
+                          'id_produk2' : '' + get_id_produk2,
+                          'jumlah' : '' + get_jumlah,
+                        } ,
+                        success: function (response) {
+                          let res = JSON.parse(response);
+                          if(res.status == 'success'){
+                            setTimeout(function(){
+                              $('#add_upselling').modal('hide');
+                              location.reload();  
+                            }, 500);
+                          }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                          console.log(textStatus, errorThrown);
+                        }
+                    });
+              }else{
+                alert('Masih ada yang kosong');
+              }
+          });
         }
 
         function submit_kategori(){
