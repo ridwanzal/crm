@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <section style="min-height:800px;position:relative;top:-60px;">
+    <section style="position:relative;top:-80px;">
         <div class="container">
             <br/>
             <br/>
@@ -104,30 +104,83 @@
                     <?php }
                 ?>
             </div>
-            <div class="row">
-                <?php 
-                    foreach($produk as $list){?>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds" >
-                                    <form method="POST" action="<?php echo base_url('pelanggan/submit_transaksi'); ?>">
-                                        <div class="blog-ctn">
-                                            <p style="color:#888;font-size:20px; font-weight:bold;">Produk Upselling</p>    
-                                            <div class="blog-hd-sw">
-                                                <hr>
-                                                <p style="color:#444;font-size:20px; font-weight:600;"><?php echo $list->nama_produk; ?></p>
-                                                <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga; ?></p>
+        </section>
+        <section style="position:relative; top:-80px;">
+            <div class="container">
+                <div class="row">
+                    <?php 
+                        if(!sizeof($produk_upselling) > 0){ ?>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds" >
+                                        <form method="POST" action="<?php echo base_url('pelanggan/submit_transaksi'); ?>">
+                                            <div class="blog-ctn">
+                                                <p style="color:#888;font-size:20px; font-weight:bold;">Tidak ada Produk Upselling</p>    
                                             </div>
-                                            <p><?php echo $list->spesifikasi; ?></p>
-                                            <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
-                                        </div>
-                                </form>
+                                    </form>
+                                </div>
+                            </div>
+                        
+                        <?php  }else{
+                            foreach($produk_upselling as $list){?>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds" >
+                                            <form method="POST" action="<?php echo base_url('pelanggan/submit_transaksi'); ?>">
+                                                <div class="blog-ctn">
+                                                    <p style="color:#888;font-size:20px; font-weight:bold;">Produk Upselling</p>    
+                                                    <div class="blog-hd-sw">
+                                                        <hr>
+                                                        <p style="color:#444;font-size:20px; font-weight:600;"><?php echo $list->nama_produk2; ?></p>
+                                                        <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga_produk2; ?></p>
+                                                    </div>
+                                                    <p><?php echo $list->spesifikasi_produk2; ?></p>
+                                                    <!-- <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a> -->
+                                                </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php }
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="position:relative;top:-80px;">
+        <div class="container">
+            <div class="row">
+                <br/>
+                <br/>
+                <div class="col-lg-12">
+                    <p style="color:#888;font-size:20px; font-weight:bold;">Produk Crosselling</p>    
+                    <hr/>
+                </div>
+                <?php 
+                    foreach($produk_crosselling as $list){?>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds">
+                                <div class="blog-img">
+                                    <img src="<?php echo base_url()?>assets/img/post/ayam.jpg" alt="" />
+                                </div>
+                                <div class="blog-ctn">
+                                    <div class="blog-hd-sw">
+                                        <p style="color:#444;font-size:20px; font-weight:bold;"><?php echo $list->nama_produk; ?></p>
+                                        <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga; ?></p>
+                                    </div>
+                                    <p><?php echo $list->spesifikasi; ?></p>
+                                    <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
+                                    <?php 
+                                        if($this->session->userdata('status') == "login"){
+                                            ?>
+                                        <a href="<?php echo site_url('main/detail_produk').'/'.$list->id_produk;?>"><input style="background:#3C6E71; color:#fff ;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;" type="submit" class="" value="Beli" onclick="function getdate()"></a>
+                                        <?php }else{ ?>
+                                            <a href="<?php echo base_url();?>login"><button style="background:#000; color:#fff;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;">Login untuk membeli</button></a>
+                                        <?php }
+                                    ?>
+                                </div>
                             </div>
                         </div>
                     <?php }
                 ?>
-            </div>
-            <div class="row">
-              
             </div>
         </div>
     </section>
