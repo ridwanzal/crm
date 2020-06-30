@@ -9,10 +9,10 @@
                         </li>
                         <li><a href="<?php echo base_url();?>admin/daftar_pelanggan"><i class="notika-icon notika-mail"></i> Pelanggan</a>
                         </li>
+                        <li class="active"><a href="<?php echo base_url(); ?>admin/transaksi"><i class="notika-icon notika-edit"></i>Transaksi</a>
+                        </li>
                         <li><a href="<?php echo base_url();?>admin/produk/upselling"><i class="notika-icon notika-edit"></i> Up Selling</a>
                         </li>
-                        <!-- <li><a href="#"><i class="notika-icon notika-edit"></i> Cross Selling</a>
-                        </li> -->
                         <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
                     </ul>

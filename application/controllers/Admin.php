@@ -89,6 +89,59 @@ class Admin extends CI_Controller {
       }
 
 
+      public function transaksi(){
+            $data['title_bar'] = "Pelanggan | ayampreneur";
+            $data['header_page'] = "";
+
+            $id_user = $this->session->userdata('id_user');
+            
+            $query = "SELECT 
+            a.*, b.*
+            FROM 
+            user a , 
+            konsumen b 
+            where a.id_konsumen = b.id_konsumen AND
+            a.id_user = '$id_user' ";
+
+            $query2 = "SELECT * FROM kategori";
+
+            $query3 = "SELECT * FROM produk";
+
+            $query4 = "SELECT 
+            a.*, b.*
+            FROM 
+            user a , 
+            konsumen b 
+            where a.id_konsumen = b.id_konsumen AND a.level = 'konsumen' ";
+
+            $query5 = "SELECT
+            a.id_transaksi, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
+            FROM
+            transaksi_produk a,
+            detail_transaksi b,
+            produk c
+            WHERE
+            a.id_transaksi = b.id_transaksi AND
+            b.id_produk = c.id_produk";
+
+            $query_result = $this->db->query($query)->result();
+            $query_result2 = $this->db->query($query2)->result();
+            $query_result3 = $this->db->query($query3)->result();
+            $query_result4 = $this->db->query($query4)->result();
+            $query_result5 = $this->db->query($query5)->result();
+
+            $data['profile'] = $query_result;
+            $data['kategori'] = $query_result2;
+            $data['produk'] = $query_result3;
+            $data['pelanggan'] = $query_result4;
+            $data['transaksi'] = $query_result5;
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/navbar', $data);
+            $this->load->view('admin/dashboard/transaksi', $data);
+            $this->load->view('admin/footer', $data);
+      }
+
+
       public function kritiksaran(){
             $data['title_bar'] = "Kritik dan Saran | ayampreneur";
             $data['header_page'] = "";

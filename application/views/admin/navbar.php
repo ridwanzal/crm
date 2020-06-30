@@ -16,7 +16,7 @@
                                     <li class="nav-item" style="">
                                         <a href="<?php echo base_url()?>register"><button class="btn btn-success notika-btn-success">Register</button></a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item">   
                                         <a href="<?php echo base_url()?>login"><button class="btn btn-primary notika-btn-primary">Login</button></a>
                                     </li>
                                 </ul>

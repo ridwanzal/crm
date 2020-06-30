@@ -65,6 +65,7 @@ $route['admin/profile'] = 'main/profile';
 $route['admin/produk'] = 'admin/produk';
 $route['admin/daftar_pelanggan'] = 'admin/pelanggan';
 $route['admin/produk/upselling'] = 'admin/upselling';
+$route['admin/transaksi'] = 'admin/transaksi';
 $route['translate_uri_dashes'] = FALSE;
 
 

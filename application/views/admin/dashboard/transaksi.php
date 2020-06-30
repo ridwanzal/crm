@@ -9,9 +9,9 @@
                         </li>
                         <li><a href="<?php echo base_url();?>admin/daftar_pelanggan"><i class="notika-icon notika-support"></i> Pelanggan</a>
                         </li>
-                        <li class=""><a href="<?php echo base_url(); ?>admin/transaksi"><i class="notika-icon notika-edit"></i>Transaksi</a>
+                        <li class="active"><a href="<?php echo base_url(); ?>admin/transaksi"><i class="notika-icon notika-edit"></i>Transaksi</a>
                         </li>
-                        <li class="active"><a href="<?php echo base_url(); ?>admin/produk/upselling"><i class="notika-icon notika-edit"></i> Up Selling</a>
+                        <li class=""><a href="<?php echo base_url(); ?>admin/produk/upselling"><i class="notika-icon notika-edit"></i> Up Selling</a>
                         </li>
                         <li class=""><a href="<?php echo base_url();?>admin/kritiksaran"><i class="notika-icon notika-edit"></i> Kritik dan Saran</a>
                         </li>
@@ -119,18 +119,32 @@
                                         <thead>
                                             <tr>
                                                 <th>No. </th>
-                                                <th>Nama Kategori</th>
+                                                <th>ID Transaksi</th>
+                                                <th>ID Produk</th>
+                                                <th>Nama Produk</th>
+                                                <th>Tanggal</th>
+                                                <th>Harga</th>
+                                                <th>Jumlah</th>
+                                                <th>Subtotal</th>
+                                                <th>Total Bayar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                                                 $i = 0;
-                                                foreach($kategori as $list){
+                                                foreach($transaksi as $list){
                                                     $i++;
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
-                                                            <td><?php echo $list->nama_kategori; ?></td>
+                                                            <td><?php echo $list->id_transaksi; ?></td>
+                                                            <td><?php echo $list->id_produk; ?></td>
+                                                            <td><?php echo $list->nama_produk; ?></td>
+                                                            <td><?php echo $list->tanggal; ?></td>
+                                                            <td><?php echo $list->harga; ?></td>
+                                                            <td><?php echo $list->jumlah; ?></td>
+                                                            <td><?php echo $list->subtotal; ?></td>
+                                                            <td><?php echo $list->total_bayar; ?></td>
                                                         </tr>
                                                 <?php }
                                             ?>
@@ -154,7 +168,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                            <!-- <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>No. </th>
@@ -174,6 +188,41 @@
                                                     <td><?php echo $list->nama_produk1; ?></td>
                                                     <td><?php echo $list->nama_produk2; ?></td>
                                                     <td><?php echo $list->jumlah; ?></td>
+                                                </tr>
+                                        <?php }
+                                    ?>
+                                </tbody>
+                            </table> -->
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No. </th>
+                                        <th>ID Transaksi</th>
+                                        <th>ID Produk</th>
+                                        <th>Nama Produk</th>
+                                        <th>Tanggal</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
+                                        <th>Subtotal</th>
+                                        <th>Total Bayar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                        $i = 0;
+                                        foreach($transaksi as $list){
+                                            $i++;
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $i; ?></td>
+                                                    <td><?php echo $list->id_transaksi; ?></td>
+                                                    <td><?php echo $list->id_produk; ?></td>
+                                                    <td><?php echo $list->nama_produk; ?></td>
+                                                    <td><?php echo $list->tanggal; ?></td>
+                                                    <td><?php echo $list->harga; ?></td>
+                                                    <td><?php echo $list->jumlah; ?></td>
+                                                    <td><?php echo $list->subtotal; ?></td>
+                                                    <td><?php echo $list->total_bayar; ?></td>
                                                 </tr>
                                         <?php }
                                     ?>
