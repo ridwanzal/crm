@@ -124,7 +124,7 @@ class Pelanggan extends CI_Controller {
 
       
         $query5 = "SELECT
-        a.id_transaksi, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
+        a.id_transaksi, a.status, a.bukti, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
         FROM
         transaksi_produk a,
         detail_transaksi b,
@@ -350,7 +350,7 @@ class Pelanggan extends CI_Controller {
     
       if($id_konsumen){
             $query5 = "SELECT
-            a.id_transaksi, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
+            a.id_transaksi, a.status, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
             FROM
             transaksi_produk a,
             detail_transaksi b,
@@ -361,7 +361,7 @@ class Pelanggan extends CI_Controller {
             a.id_konsumen = $id_konsumen";
       }else{
             $query5 = "SELECT
-            a.id_transaksi, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
+            a.id_transaksi, a.status, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
             FROM
             transaksi_produk a,
             detail_transaksi b,
@@ -392,5 +392,28 @@ class Pelanggan extends CI_Controller {
       $this->load->view('pelanggan/dashboard/index', $data);
       $this->load->view('pelanggan/footer', $data);
     }
+    
+    public function upload_bukti($param){
+      $image_path = "";
+      $config['upload_path'] = './assets/transaction/proof/';
+      $config['allowed_types'] = 'jpg|png|gif|pdf';
+      $this->load->library('upload', $config);
+      if(!$this->upload->do_upload('upload_image')){
+            echo 'Gagal upload';
+      }else{
+            $image_path = $this->upload->data('file_name');
+      }
+      $data = array(
+            'bukti' => $image_path,
+      );
+      $this->db->where('id_transaksi', $param);
+      $this->db->update('transaksi_produk', $data);
+      $affect_row = $this->db->affected_rows();
+      if($affect_row > 0){
+            redirect(base_url("pelanggan/transaksi"));
+      }else{
+
+      }
+}
 
 }

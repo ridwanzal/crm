@@ -24,69 +24,6 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="header-top-menu">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_product">Tambah Upselling Produk</button>&nbsp;
-                <div class="modal fade" id="add_product" role="dialog">
-                    <div class="modal-dialog modals-default">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <h2>Tambah Produk Upselling</h2>
-                                <br/>
-                                <div class="nk-form">
-                                    <div class="input-group mg-t-15">
-                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
-                                        <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="id_produk1">
-                                                <option value=''> -- Pilih Produk bundler</option>
-                                                <?php 
-                                                    foreach($produk as $list){ ?>
-                                                        <option value='<?php echo $list->id_produk; ?>'><?php echo $list->nama_produk; ?></option>
-                                                    <?php }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mg-t-15">
-                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
-                                        <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="id_produk2">
-                                                <option value=''> -- Pilih Produk upselling</option>
-                                                <?php 
-                                                    foreach($produk as $list){ ?>
-                                                        <option value='<?php echo $list->id_produk; ?>'><?php echo $list->nama_produk; ?></option>
-                                                    <?php }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mg-t-15">
-                                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
-                                        <div class="nk-int-st">
-                                            <select class="selectpicker form-control" id="jumlah_upselling">
-                                                <option value=''> -- Jumlah </option>
-                                                <?php 
-                                                    for($x=1; $x <= 50; $x++){ 
-                                                        $i++;
-                                                        ?>
-                                                        <option value='<?php echo $x; ?>'><?php echo $x; ?></option>
-                                                    <?php }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br/>
-                            <br/>
-                            <div class="modal-footer">
-                                <button type="button" id="submit_upselling" class="btn btn-default">Simpan</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="modal fade" id="add_upselling" role="dialog">
                     <div class="modal-dialog modals-default">
                         <div class="modal-content">
@@ -168,31 +105,6 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
                         <div class="table-responsive">
-                            <!-- <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No. </th>
-                                        <th>Nama Produk Bundler</th>
-                                        <th>Nama Produk Upselling</th>
-                                        <th>Jumlah</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                                        $i = 0;
-                                        foreach($upselling2 as $list){
-                                            $i++;
-                                            ?>
-                                                <tr>
-                                                    <td><?php echo $i; ?></td>
-                                                    <td><?php echo $list->nama_produk1; ?></td>
-                                                    <td><?php echo $list->nama_produk2; ?></td>
-                                                    <td><?php echo $list->jumlah; ?></td>
-                                                </tr>
-                                        <?php }
-                                    ?>
-                                </tbody>
-                            </table> -->
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
@@ -205,6 +117,9 @@
                                         <th>Jumlah</th>
                                         <th>Subtotal</th>
                                         <th>Total Bayar</th>
+                                        <th>Bukti</th>
+                                        <th>Status</th>
+                                        <th>Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -223,6 +138,39 @@
                                                     <td><?php echo $list->jumlah; ?></td>
                                                     <td><?php echo $list->subtotal; ?></td>
                                                     <td><?php echo $list->total_bayar; ?></td>
+                                                    <td>
+                                                        <?php 
+                                                            if($list->bukti != ""){
+                                                                ?>
+                                                                    <img style="cursor" width="60" src='<?php echo base_url('assets/transaction/proof/'.$list->bukti);?>'>
+                                                                <?php
+                                                            }else{
+                                                                echo '<span style="color:red;">Belum ada bukti</span>';
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?
+                                                            if($list->status == ''){
+                                                                echo '<span style="color:#d58512">Inprogress</span>';
+                                                            }else{
+                                                                echo '<span style="color:#4cae4c">Confirmed</span>';
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?
+                                                            if($list->status == ''){
+                                                                ?>
+                                                                    <?php echo form_open_multipart('admin/konfirmasi/'.$list->id_transaksi); ?>
+                                                                        <input type="submit" value="Konfirmasi" style="background:#337ab7;color:#fff;border:1px solid #337ab7;" name="submit">
+                                                                    <?php echo form_close();?>
+                                                                <?php
+                                                            }else{
+                                                                echo '<span style="color:#4cae4c">Confirmed</span>';
+                                                            }
+                                                        ?>
+                                                    </td>
                                                 </tr>
                                         <?php }
                                     ?>

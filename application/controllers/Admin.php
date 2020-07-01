@@ -115,7 +115,7 @@ class Admin extends CI_Controller {
             where a.id_konsumen = b.id_konsumen AND a.level = 'konsumen' ";
 
             $query5 = "SELECT
-            a.id_transaksi, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
+            a.id_transaksi, a.bukti, a.status, c.id_produk, c.nama_produk, a.tanggal, c.harga, b.jumlah, b.subtotal, a.total_bayar
             FROM
             transaksi_produk a,
             detail_transaksi b,
@@ -331,4 +331,37 @@ class Admin extends CI_Controller {
             }
       }
 
+      public function upload_bukti($param){
+            $foto = $_FILES['upload_image'];
+            $image_path = "";
+            $config['upload_path'] = './assets/transaction/proof/';
+            $config['allowed_types'] = 'jpg|png|gif|pdf';
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('upload_image')){
+                  echo 'Gagal upload';
+            }else{
+                  $image_path = $this->upload->data('file_name');
+            }
+            $data = array(
+                  'bukti' => $image_path,
+            );
+            $this->db->where('id_transaksi', $param);
+            $this->db->update('transaksi_produk', $data);
+            $affect_row = $this->db->affected_rows();
+            if($affect_row > 0){
+                  redirect(base_url("pelanggan/transaksi"));
+            }
+      }
+      
+      public function konfirmasi($param){
+            $data = array(
+                  'status' => 'confirmed',
+            );
+            $this->db->where('id_transaksi', $param);
+            $this->db->update('transaksi_produk', $data);
+            $affect_row = $this->db->affected_rows();
+            if($affect_row > 0){
+                  redirect(base_url("admin/transaksi"));
+            }
+      }
 }
