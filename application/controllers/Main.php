@@ -33,18 +33,27 @@ class Main extends CI_Controller {
 			konsumen b 
 			where a.id_konsumen = b.id_konsumen AND
 			a.id_user = '$id_user' ";
+			
 
 			$query2 = "SELECT * FROM produk where stok > 0";
 
 			$query3 = "SELECT * FROM kategori";
+
+			$query4=  "SELECT a.id_kategori, a.nama_kategori, COUNT(c.id_transaksi) as total_terjual
+						FROM
+						kategori a LEFT JOIN produk b ON a.id_kategori = b.id_kategori LEFT JOIN
+						detail_transaksi c ON c.id_produk = b.id_produk LEFT JOIN
+						transaksi_produk d ON d.id_transaksi = c.id_transaksi
+						GROUP BY a.id_kategori";
 			$query_result3 = $this->db->query($query3)->result();
-			
 			$query_result = $this->db->query($query)->result();
 			$query_result2 = $this->db->query($query2)->result();
+			$query_result4 = $this->db->query($query4)->result();
 
 			$data['profile'] = $query_result;
 			$data['produk'] = $query_result2;
 			$data['kategori'] = $query_result3;
+			$data['penjualan'] = $query_result4;
 			$this->load->view('admin/header', $data);
 			$this->load->view('admin/navbar', $data);
 			$this->load->view('admin/dashboard/index', $data);

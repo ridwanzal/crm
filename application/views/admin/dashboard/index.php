@@ -32,19 +32,18 @@
 										<i class="notika-icon notika-house"></i>
 									</div>
 									<div class="breadcomb-ctn">
-										<h2>Daftar Katalog</h2>
-                                        <p><span style="font-weight:bold;">
                                         <?php 
-                                          if($this->session->userdata('status') == "login"){
-                                              echo $profile[0]->nama_konsumen; 
-                                              ?>
-                                              <?php
-                                              ?>
-                                              </span> selamat datang.</p>
-                                          <?php }else{?>
-                                              </span> Kami menyediakan ayam yang sehat dan harga terbaik.</p>
-                                          <?php }
-                                        ?>
+                                            $i = 0;
+                                            foreach($penjualan as $list){
+                                                $i = $i + $list->total_terjual;
+                                                ?>
+                                                <?php
+                                            }
+                                            ?>
+                                        
+										<h2>Total Penjualan <span>&nbsp;<?php echo $i;?></span></h2>
+                                        <p><span style="font-weight:bold;">
+                                        </span>Kami menyediakan ayam yang sehat dan harga terbaik.</p>
 									</div>
 								</div>
 							</div>
@@ -59,39 +58,37 @@
 			</div>
 		</div>
     </div>
-    <!-- <section style="min-height:800px;position:relative;top:-60px;">
+    <section style="min-height:800px;position:relative;top:-60px;">
         <div class="container">
             <div class="row">
+                <br/>
+                <br/>
                 <?php 
-                    foreach($produk as $list){?>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds">
+                    foreach($penjualan as $list){?>
+                            <!-- <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds">
                                 <div class="blog-img">
-                                    <img src="<?php echo base_url()?>assets/img/post/ayam.jpg" alt="" />
                                 </div>
                                 <div class="blog-ctn">
                                     <div class="blog-hd-sw">
-                                        <p style="color:#444;font-size:20px; font-weight:bold;"><?php echo $list->nama_produk; ?></p>
-                                        <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga; ?></p>
+                                        <p style="color:#444;font-size:20px; font-weight:bold;text-transform: uppercase;"><?php echo $list->nama_kategori; ?></p>
+                                        <p style="color:#444;font-size:30px;font-weight:bold;"><?php echo $list->total_terjual; ?></p>
                                     </div>
-                                    <p><?php echo $list->spesifikasi; ?></p>
-                                    <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
-                                    <?php 
-                                        if($this->session->userdata('status') == "login"){
-                                            ?>
-                                            <input style="background:#3C6E71; color:#fff ;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;" type="submit" class="" value="Beli">
-                                        <?php }else{ ?>
-                                            <a href="<?php echo base_url();?>login"><button style="background:#000; color:#fff;width:100%; border:1px solid #000;padding:10px;border-radius:4px;margin-top:15px;font-weight:bold;">Login untuk membeli</button></a>
-                                        <?php }
-                                    ?>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30" style="padding:45px;">
+                                    <div class="website-traffic-ctn">
+                                        <h2><span class="counter"><?php echo $list->total_terjual; ?></span></h2>
+                                        <p><?php echo $list->nama_kategori; ?></p>
+                                    </div>
+                                    <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
                                 </div>
                             </div>
-                        </div>
                     <?php }
                 ?>
             </div>
         </div>
-    </section> -->
+    </section>
     <div class="line-chart-area" style="display:none;">
         <div class="container">
             <div class="row">
