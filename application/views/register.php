@@ -37,7 +37,7 @@
                     <div class="input-group mg-t-15">
                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-phone"></i></span>
                         <div class="nk-int-st">
-                            <input type="text" class="form-control" placeholder="Alamat" name=" " required>
+                            <input type="text" class="form-control" placeholder="Alamat" name="p_alamat" required>
                         </div>
                     </div>
                     <div class="input-group mg-t-15">
