@@ -82,7 +82,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                    <input type="text" class="form-control" placeholder="Level" value="<?php echo $profile[0]->alamat; ?>">
+                                    <input type="text" class="form-control" placeholder="Level" value="<?php echo '' ; ?>">
                                     </div>
                                 </div>
                             </div>
