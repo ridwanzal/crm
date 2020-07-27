@@ -35,6 +35,12 @@
                         </div>
                     </div>
                     <div class="input-group mg-t-15">
+                        <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-phone"></i></span>
+                        <div class="nk-int-st">
+                            <input type="text" class="form-control" placeholder="Alamat" name=" " required>
+                        </div>
+                    </div>
+                    <div class="input-group mg-t-15">
                         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                         <div class="nk-int-st">
                             <input type="password" class="form-control" placeholder="Password" name="p_password" autocomplete="on" required>

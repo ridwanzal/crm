@@ -31,12 +31,14 @@ class Register extends CI_Controller {
 		$username = $this->input->post('p_username', TRUE);
         $nama = $this->input->post('p_nama', TRUE);
 		$email = $this->input->post('p_email', TRUE);
-		$telepon = $this->input->post('p_telepon', TRUE);	
+		$telepon = $this->input->post('p_telepon', TRUE);
+		$alamat = $this->input->post('p_alamat', TRUE);	
 		$password = $this->input->post('p_password', TRUE);
 		
 		$data = array(
 			'nama_konsumen' => ''.$nama,
 			'no_telepon' => ''.$telepon,
+			'alamat' => ''.$alamat,
 			'email' => ''.$email
 		);
 
