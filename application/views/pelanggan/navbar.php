@@ -44,6 +44,8 @@
                         <a href="<?= base_url()?>/login"><img src="<?php echo base_url();?>/assets/img/banner/2.png"/></a>
                     </div>
                 </div>
+                
             </div>  
         </div>
     </div>
+

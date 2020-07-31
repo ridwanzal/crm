@@ -107,7 +107,7 @@
                                 <div class="blog-ctn">
                                     <div class="blog-hd-sw">
                                         <p style="color:#444;font-size:20px; font-weight:bold;"><?php echo $list->nama_produk; ?></p>
-                                        <p style="color:#444;font-size:18px;"><?php echo 'Rp. '. $list->harga; ?></p>
+                                        <p style="color:#eb4034;font-size:18px;font-weight:bold;"><?php echo 'Rp. '. $list->harga; ?>&nbsp;<span style="font-size:10px;text-decoration: line-through;font-weight:normal;color:black;"><?php echo 'Rp. '. intval($list->harga + 20900); ?></span></p>
                                     </div>
                                     <p><?php echo $list->spesifikasi; ?></p>
                                     <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
