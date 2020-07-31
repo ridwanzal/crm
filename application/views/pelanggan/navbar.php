@@ -36,3 +36,14 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="slider single-item" style="margin-top:10px;cursor:pointer;">
+                    <div>
+                        <a href="<?= base_url()?>/login"><img src="<?php echo base_url();?>/assets/img/banner/2.png"/></a>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>

@@ -64,11 +64,12 @@
     <script src="<?php echo base_url()?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url()?>assets/js/data-table/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/data-table/data-table-act.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- main JS
 		============================================ -->
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
     <script>
-            var BASE_URL = 'http://localhost/crm';
+            var BASE_URL = 'http://umarhafidh.online/';
             $(document).ready(function(){
                 // console.log('bagusnye');
                 // submit_kategori();

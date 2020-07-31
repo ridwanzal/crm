@@ -50,8 +50,10 @@
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/responsive.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    
 </head>
 <body>
