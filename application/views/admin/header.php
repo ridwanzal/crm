@@ -52,6 +52,7 @@
     <!-- modernizr JS
     ============================================ -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
   </head>

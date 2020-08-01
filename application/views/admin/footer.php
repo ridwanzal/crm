@@ -1,7 +1,11 @@
     <!-- Login Register area End-->
     <!-- jquery
 		============================================ -->
-        <script src="<?php echo base_url()?>assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- <script src="<?php echo base_url()?>assets/js/vendor/jquery-1.12.4.min.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
     <!-- bootstrap JS
 		============================================ -->
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
@@ -69,22 +73,62 @@
     <script src="<?php echo base_url()?>assets/js/main.js"></script>
         <!-- flot JS
 		============================================ -->
-    <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.js"></script>
+    <!-- <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.js"></script>
     <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.resize.js"></script>
     <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.time.js"></script>
     <script src="<?php echo base_url()?>assets/js/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/flot/analtic-flot-active.js"></script>
-
+    <script src="<?php echo base_url()?>assets/js/flot/analtic-flot-active.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </body>
 <script>
         var BASE_URL = 'http://localhost/crm';
         $(document).ready(function(){
-            // console.log('bagusnye');
-            submit_kategori();
-            submit_produk();
-            use_datatable();
-            // submit_transaksi();
-            submit_upselling();
+          // console.log('bagusnye');
+          submit_kategori();
+          submit_produk();
+          use_datatable();
+          // submit_transaksi();
+          submit_upselling();
+          var ctx = document.getElementById('myChart');
+          // var myLineChart = new Chart(ctx, {
+          //   type: 'line',
+          //   data: ['10', '20'],
+          // });
+          let ARR_DATA_CHART = [];
+          $.ajax({
+            url : '<?= base_url();?>/admin/chart_penjualan',
+            success : function(res){
+              console.log(res);
+              console.log('ini mantap jiwa')
+              let resp = JSON.parse(res); 
+              console.log(resp);
+              let i = 0;
+              for(i; i < resp.length; i++){
+                ARR_DATA_CHART.push(Object.values(resp[i]));
+              }
+              console.log(ARR_DATA_CHART)
+              var myLineChart = new Chart(
+              document.getElementById("myChart"),
+                {"type":"line",
+                  "data":
+                      {
+                      "labels":
+                        ["January","February","March","April","May","June","July","Agustus", "September", "Oktober", "November", "Desember"],
+                      "datasets":[
+                                    {"label":"My First Dataset","data":ARR_DATA_CHART[0],"fill":false,"borderColor":"rgb(75, 192, 192)","lineTension":0.01}
+                                  ]
+                      },"options":{
+                            title: {
+                              display: true,
+                              text: 'Total Penjualan Ayam PT Tiga Raja'
+                          }
+                      }
+                }); 
+            },
+          });
+
+          
+
         });
 
         function use_datatable(){

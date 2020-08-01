@@ -16,7 +16,7 @@ class Main extends CI_Controller {
 		$this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta'); // default time zone indonesia
 	}
-	
+
 	public function index()
 	{
 		$check_level = $this->session->userdata('level');
@@ -48,15 +48,37 @@ class Main extends CI_Controller {
 						detail_transaksi c ON c.id_produk = b.id_produk LEFT JOIN
 						transaksi_produk d ON d.id_transaksi = c.id_transaksi
 						GROUP BY a.id_kategori";
+
+			$query5 = "SELECT 
+						SUM(IF(month = 'Jan', total, 0)) AS 'Jan',
+						SUM(IF(month = 'Feb', total, 0)) AS 'Feb',
+						SUM(IF(month = 'Mar', total, 0)) AS 'Mar',
+						SUM(IF(month = 'Apr', total, 0)) AS 'Apr',
+						SUM(IF(month = 'May', total, 0)) AS 'May',
+						SUM(IF(month = 'Jun', total, 0)) AS 'Jun',
+						SUM(IF(month = 'Jul', total, 0)) AS 'Jul',
+						SUM(IF(month = 'Aug', total, 0)) AS 'Aug',
+						SUM(IF(month = 'Sep', total, 0)) AS 'Sep',
+						SUM(IF(month = 'Oct', total, 0)) AS 'Oct',
+						SUM(IF(month = 'Nov', total, 0)) AS 'Nov',
+						SUM(IF(month = 'Dec', total, 0)) AS 'Dec',
+						SUM(total) AS total_yearly
+						FROM (
+					SELECT DATE_FORMAT(tanggal, '%b') AS month, COUNT(id_transaksi) as total
+					FROM transaksi_produk
+					WHERE tanggal <= NOW() and tanggal >= Date_add(Now(),interval - 12 month)
+					GROUP BY DATE_FORMAT(tanggal, '%m-%Y')) as sub";
 			$query_result3 = $this->db->query($query3)->result();
 			$query_result = $this->db->query($query)->result();
 			$query_result2 = $this->db->query($query2)->result();
 			$query_result4 = $this->db->query($query4)->result();
+			$query_result5 = $this->db->query($query5)->result();
 
 			$data['profile'] = $query_result;
 			$data['produk'] = $query_result2;
 			$data['kategori'] = $query_result3;
 			$data['penjualan'] = $query_result4;
+			$data['chartmonth'] = $query_result5;
 			$this->load->view('admin/header', $data);
 			$this->load->view('admin/navbar', $data);
 			$this->load->view('admin/dashboard/index', $data);

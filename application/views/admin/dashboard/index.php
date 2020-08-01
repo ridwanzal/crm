@@ -58,7 +58,7 @@
 			</div>
 		</div>
     </div>
-    <section style="min-height:800px;position:relative;top:-60px;">
+    <section style="position:relative;top:0px;">
         <div class="container">
             <div class="row">
                 <br/>
@@ -89,21 +89,12 @@
             </div>
         </div>
     </section>
-    <div class="line-chart-area" style="display:none;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="visitor-sv-tm-int sm-res-mg-t-30 tb-res-mg-t-30 tb-res-ds-n dk-res-ds">
-                        <div class="contact-hd mg-bt-ant-inner">
-                            <h2>Grafik Penjualan</h2>
-                            <p>Grafik penjualan berdasarkan bulan</p>
-                        </div>
-                        <div class="visitor-st-ch visitor-ov-ct">
-                            <div id="visit-over-time" class="flot-chart"></div>
-                            <div class="flc-visits"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section>
+     <div class="container">
+      <div class="row" style="margin-top:20px;margin-bottom:40px;">
+        <div class="col-lg-12 col-md-12">
+            <canvas id="myChart" width="400" height="150"></canvas>
         </div>
-    </d>
+      </div>
+     </div>
+    </section>
