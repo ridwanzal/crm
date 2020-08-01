@@ -41,7 +41,7 @@
                                             }
                                             ?>
                                         
-										<h2>Total Penjualan <span>&nbsp;<?php echo $i;?></span></h2>
+										<h2>Total Item terjual : <span>&nbsp;<?php echo $i;?></span></h2>
                                         <p><span style="font-weight:bold;">
                                         </span>Kami menyediakan ayam yang sehat dan harga terbaik.</p>
 									</div>
