@@ -35,7 +35,10 @@ class Main extends CI_Controller {
 			a.id_user = '$id_user' ";
 			
 
-			$query2 = "SELECT * FROM produk where stok > 0";
+			$query2 = "SELECT *, b.id_produk2 as produk_upselling
+					   FROM
+					   produk a LEFT JOIN upselling b ON a.id_produk = b.id_produk
+					   WHERE a.stok > 0";
 
 			$query3 = "SELECT * FROM kategori";
 
@@ -72,7 +75,11 @@ class Main extends CI_Controller {
 			where a.id_konsumen = b.id_konsumen AND
 			a.id_user = '$id_user' ";
 
-			$query2 = "SELECT * FROM produk where stok > 0 ";
+		
+			$query2 = "SELECT *, b.id_produk2 as produk_upselling
+			FROM
+			produk a LEFT JOIN upselling b ON a.id_produk = b.id_produk
+			WHERE a.stok > 0";
 
 			$query_result = $this->db->query($query)->result();
 			$query_result2 = $this->db->query($query2)->result();

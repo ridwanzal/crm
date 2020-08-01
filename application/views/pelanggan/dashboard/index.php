@@ -98,6 +98,7 @@
         <div class="container">
             <div class="row">
                 <?php 
+                    // echo '<pre>' , var_dump($produk) , '</pre>';die;
                     foreach($produk as $list){?>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds">
@@ -111,6 +112,13 @@
                                     </div>
                                     <p><?php echo $list->spesifikasi; ?></p>
                                     <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
+                                    <?php
+                                        if($list->id_produk2 !== NULL){
+                                            ?>
+                                                <div style="background:#67a825;color:white;padding:5px;border-radius:10px;width:80%;margin-top:10px;"><?php echo 'Tersedia Produk upselling' ?></div>
+                                            <?php
+                                        }
+                                    ?>
                                     <?php 
                                         if($this->session->userdata('status') == "login"){
                                             ?>
