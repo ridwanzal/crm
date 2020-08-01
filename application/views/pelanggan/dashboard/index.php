@@ -115,7 +115,7 @@
                                     <?php
                                         if($list->id_produk2 !== NULL){
                                             ?>
-                                                <div style="background:#67a825;color:white;padding:5px;border-radius:10px;width:80%;margin-top:10px;"><?php echo 'Tersedia Produk upselling' ?></div>
+                                                <div style="margin-top:15px;"><span style="background:#67a825;color:white;padding:5px;border-radius:10px;width:80%;font-size:10px;"><?php echo 'Tersedia Produk upselling' ?>&nbsp;</span>&nbsp;<span style="font-size:11px;font-weight:bold;">min 2 item</span></div>
                                             <?php
                                         }
                                     ?>
