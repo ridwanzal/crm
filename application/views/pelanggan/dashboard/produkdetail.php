@@ -80,6 +80,13 @@
                                             </div>
                                             <p><?php echo $list->spesifikasi; ?></p>
                                             <a class="vw-at" href="#"><?php echo 'Stok tersedia : ' .$list->stok; ?></a>
+                                            <?php 
+                                              if(sizeof($produk_upselling) > 0){
+                                                    ?>
+                                                        <div style="background:#53ba3a;padding:3px 6px 3px 6px; width:180px;border-radius:4px;margin-top:20px;color:#fff;">Minimal total 2 pembelian</div>
+                                                    <?php
+                                              }
+                                            ?>
                                             <div class="input-group mg-t-15">
                                                 <span class="input-group-addon"><i class="notika-icon notika-edit"></i></span>
                                                 <div class="nk-int-st">
@@ -114,7 +121,7 @@
                                 <div class="blog-inner-list notika-shadow mg-t-30 tb-res-ds-n dk-res-ds" >
                                         <form method="POST" action="<?php echo base_url('pelanggan/submit_transaksi'); ?>">
                                             <div class="blog-ctn">
-                                                <p style="color:#888;font-size:20px; font-weight:bold;">Tidak ada Produk Upselling</p>    
+                                                <p style="color:#888;font-size:20px; font-weight:bold;">Produk upselling tidak tersedia</p>    
                                             </div>
                                     </form>
                                 </div>
